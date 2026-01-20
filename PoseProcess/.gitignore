@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Conda
+.conda/
+envs/
+*.conda
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Log files
+*.log
+logs/
+
+# Data files
+data/
+*.pkl
+*.h5
+*.hdf5
+*.npy
+*.npz
+
+# Temporary files
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# Visualization outputs (uncomment if you don't want to track generated images)
+# *.png
+# *.jpg
+# *.jpeg
+# *.gif
+# *.pdf
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json

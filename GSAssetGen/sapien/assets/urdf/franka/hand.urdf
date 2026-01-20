@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="hand">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.0182928885137155 0.00211245552707029 0.0939277533557163" rpy="0 0 0" />
+      <mass value="0.0874331337587762" />
+      <inertia ixx="7.45040601069437E-05" ixy="-2.39555848606164E-20" ixz="-3.11385525234346E-06" iyy="0.000144098596547705" iyz="-4.12345859918553E-21" izz="0.000111182442980596" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/franka/hand.glb" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../meshes/franka/hand.glb" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="base_line"/>
+  <joint name="add_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_line"/>
+    <child link="base_link"/>
+  </joint>
+</robot>

@@ -1,0 +1,287 @@
+{
+    "dataset": {
+        "custom": {
+            "path": " ",
+            "hdf5_config": {
+                "hdf5_data_group": "data",
+                "hdf5_fields": {
+                    "images": {
+                        "hdf5_key": "images",
+                        "shape": [
+                            224,
+                            224,
+                            3
+                        ],
+                        "dtype": "uint8",
+                        "dims": 2,
+                        "augmentation": "color",
+                        "required": true
+                    },
+                    "masks": {
+                        "hdf5_key": "masks",
+                        "shape": [
+                            224,
+                            224,
+                            3
+                        ],
+                        "dtype": "uint8",
+                        "dims": 2,
+                        "augmentation": null,
+                        "required": true
+                    },
+                    "tcps": {
+                        "hdf5_key": "tcps",
+                        "shape": [
+                            10
+                        ],
+                        "dtype": "float64",
+                        "dims": 1,
+                        "augmentation": null,
+                        "required": true
+                    }
+                },
+                "input_fields": {
+                    "observation.images.cam_0": {
+                        "output_key": "observation.images.cam_0",
+                        "hdf5_fields": [
+                            "images"
+                        ],
+                        "shape": [
+                            3,
+                            224,
+                            224
+                        ],
+                        "dtype": "float32",
+                        "normalization": "imagenet"
+                    },
+                    "observation.images.mask_cam_0": {
+                        "output_key": "observation.images.mask_cam_0",
+                        "hdf5_fields": [
+                            "masks"
+                        ],
+                        "shape": [
+                            3,
+                            224,
+                            224
+                        ],
+                        "dtype": "float32",
+                        "normalization": null
+                    },
+                    "observation.states": {
+                        "output_key": "observation.states",
+                        "hdf5_fields": [
+                            "tcps"
+                        ],
+                        "shape": [
+                            10
+                        ],
+                        "dtype": "float32",
+                        "normalization": "minmax",
+                        "normalization_params": {
+                            "min": [
+                                0.4,
+                                -0.4,
+                                0.0,
+                                -1.0,
+                                -1.0,
+                                -1.0,
+                                -1.0,
+                                -1.0,
+                                -1.0,
+                                0.0
+                            ],
+                            "max": [
+                                1.0,
+                                0.4,
+                                0.7,
+                                1.0,
+                                1.0,
+                                1.0,
+                                1.0,
+                                1.0,
+                                1.0,
+                                0.1
+                            ]
+                        }
+                    }
+                },
+                "output_fields": {
+                    "action": {
+                        "output_key": "action",
+                        "hdf5_fields": [
+                            "tcps"
+                        ],
+                        "shape": [
+                            100,
+                            10
+                        ],
+                        "dtype": "float32",
+                        "normalization": "minmax",
+                        "normalization_params": {
+                            "min": [
+                                0.4,
+                                -0.4,
+                                0.0,
+                                -1.0,
+                                -1.0,
+                                -1.0,
+                                -1.0,
+                                -1.0,
+                                -1.0,
+                                0.0
+                            ],
+                            "max": [
+                                1.0,
+                                0.4,
+                                0.7,
+                                1.0,
+                                1.0,
+                                1.0,
+                                1.0,
+                                1.0,
+                                1.0,
+                                0.1
+                            ]
+                        }
+                    }
+                },
+                "output_format": "policy"
+            }
+        },
+        "image_transforms": {
+            "enable": true,
+            "max_num_transforms": 3,
+            "random_order": true,
+            "tfs": {
+                "brightness": {
+                    "weight": 1.0,
+                    "type": "ColorJitter",
+                    "kwargs": {
+                        "brightness": [
+                            0.8,
+                            1.2
+                        ]
+                    }
+                },
+                "contrast": {
+                    "weight": 1.0,
+                    "type": "ColorJitter",
+                    "kwargs": {
+                        "contrast": [
+                            0.8,
+                            1.2
+                        ]
+                    }
+                },
+                "saturation": {
+                    "weight": 1.0,
+                    "type": "ColorJitter",
+                    "kwargs": {
+                        "saturation": [
+                            0.5,
+                            1.5
+                        ]
+                    }
+                },
+                "hue": {
+                    "weight": 1.0,
+                    "type": "ColorJitter",
+                    "kwargs": {
+                        "hue": [
+                            -0.05,
+                            0.05
+                        ]
+                    }
+                },
+                "sharpness": {
+                    "weight": 1.0,
+                    "type": "SharpnessJitter",
+                    "kwargs": {
+                        "sharpness": [
+                            0.5,
+                            1.5
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "policy": {
+        "type": "mask_act",
+        "name": "mask-act",
+        "n_obs_steps": 1,
+        "chunk_size": 100,
+        "n_action_steps": 50,
+        "use_lowdim": true,
+        "use_mask": true,
+        "vision_backbone": "dinov3_vitb16",
+        "freeze_backbone": true,
+        "dino_model_dir": " ",
+        "use_lora": true,
+        "lora_config": {
+            "r": 16,
+            "lora_alpha": 16,
+            "target_modules": [
+                "q_proj",
+                "k_proj",
+                "v_proj"
+            ],
+            "lora_dropout": 0.1,
+            "bias": "none"
+        },
+        "dim_model": 512,
+        "n_heads": 8,
+        "dim_feedforward": 3200,
+        "n_encoder_layers": 4,
+        "n_decoder_layers": 1,
+        "use_vae": true,
+        "latent_dim": 32,
+        "n_vae_encoder_layers": 4,
+        "mask_importance_weights": null,
+        "num_mask": 3,
+        "image_size": 224,
+        "use_aux_head": false,
+        "label_attention_rules": {
+            "0": [
+                0
+            ],
+            "1": [
+                1,
+                2,
+                -1
+            ],
+            "2": [
+                1,
+                2,
+                -1
+            ],
+            "-1": [
+                0,
+                1,
+                2,
+                -1
+            ]
+        },
+        "optimizer_lr": 1e-05,
+        "optimizer_weight_decay": 0.0001,
+        "optimizer_lr_backbone": 1e-05
+    },
+    "output_dir": null,
+    "job_name": null,
+    "resume": false,
+    "seed": 1000,
+    "num_workers": 4,
+    "batch_size": 64,
+    "steps": 300000,
+    "eval_freq": 20000,
+    "log_freq": 10,
+    "save_checkpoint": true,
+    "save_freq": 50000,
+    "use_policy_training_preset": true,
+    "optimizer": null,
+    "scheduler": null,
+    "eval": {
+        "n_episodes": 50,
+        "batch_size": 50
+    }
+}

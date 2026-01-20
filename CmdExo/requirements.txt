@@ -1,0 +1,5 @@
+typed-argument-parser
+numpy
+opencv-python
+torch
+tqdm

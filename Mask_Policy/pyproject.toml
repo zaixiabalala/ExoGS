@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "maskpolicy"
+version = "0.1.0"
+description = "MaskPolicy: Mask Action Chunking with Transformers for Robotics. Combines mask prediction with action prediction using DINOv3 vision encoder and transformer architecture."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Ruogu Zhang" },
+    { name = "Junbo Wang"}
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+keywords = ["maskpolicy", "robotics", "machine learning", "imitation learning", "vision-language", "mask segmentation", "dino", "lora", "action chunking"]
+
+dependencies = [
+    "numpy",
+    "scipy",
+    "h5py",
+    "torch",
+    "torchvision",
+    "einops",
+    "opencv-python-headless",
+    "diffusers",
+    "transformers>=4.57.0",
+    "peft>=0.18.0",
+    "safetensors",
+    "huggingface-hub",
+    "packaging",
+    "draccus==0.10.0",
+    "jsonlines",
+    "tqdm",
+    "termcolor",
+    "matplotlib",
+    "imageio[ffmpeg]",
+]
+
+[project.optional-dependencies]
+pointcloud = [
+    "MinkowskiEngine>=0.5.0",
+]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[tool.setuptools]
+packages = ["maskpolicy"]
+
+[tool.setuptools.package-data]
+maskpolicy = ["py.typed"]
+
