@@ -157,6 +157,6 @@ Complete configuration reference for MaskACT (Mask Action Chunking with Transfor
 ## Notes
 
 1. **use_mask**: When set to `false`, the model will not perform mask prediction, only using ACT action prediction
-2. **num_mask**: Typically set to 3 or 4, corresponding to: background, robot arm, single object, or background, robot arm, multiple object instances
+2. **num_mask**: Typically set to 3, corresponding to: background, robot arm, single objects.You can also set as background, robot arm, multiple object instances.
 3. **image_size**: Must match the image size of training data
 4. **label_attention_rules**: Defines attention interaction rules between mask classes, e.g., `{"0": ["1"], "1": ["0", "2"]}` means class 0 only attends to class 1, class 1 attends to classes 0 and 2
