@@ -8,7 +8,7 @@ A lightweight Mask Adapter that mitigates domain shift by introducing semantic c
 
 ```bash
 conda create -n maskpolicy python=3.10
-cd ExoGS/Mask_Policy/maskpolicy
+cd ExoGS/Mask_Policy
 conda activate maskpolicy
 pip install -e .
 ```
