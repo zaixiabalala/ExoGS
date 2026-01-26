@@ -14,6 +14,9 @@ transfer seamlessly to a simulated environment. It provides a new solution for s
 Gaussian Splatting assets, enabling geometry-consistent replay and large-scale data augmentation. Additionally, a lightweight Mask Adapter injects instance-level semantics into the policy to enhance robustness under visual domain shifts. 
 
 ---
+## 📋 To-do List
+
+Our hardware design will be updated before 2026.2.15 !
 
 ## 🌟 Highlights
 
@@ -27,6 +30,7 @@ Gaussian Splatting assets, enabling geometry-consistent replay and large-scale d
 ## 📋 Table of Contents
 
 - [ExoGS](#exogs)
+  - [📋 To-do List](#-to-do-list)
   - [🌟 Highlights](#-highlights)
   - [📋 Table of Contents](#-table-of-contents)
   - [Overview](#overview)
