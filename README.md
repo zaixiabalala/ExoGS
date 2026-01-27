@@ -9,6 +9,8 @@
 
 **ExoGS: A 4D Real-to-Sim-to-Real Framework for Scalable Manipulation Data Collection**
 
+Yiming Wang, Ruogu Zhang, Minyang Li, Hao Shi, Junbo Wang, Deyi Li, Jieji Ren, Wenhai Liu, Weiming Wang, Hao-Shu Fang
+
 ExoGS is a robotfree 4D Real-to-Sim-to-Real framework that captures both static environments and dynamic interactions in the real world and
 transfer seamlessly to a simulated environment. It provides a new solution for scalable manipulation data collection and policy learning. ExoGS employs a self-designed robot-isomorphic passive exoskeleton AirExo-3 to capture kinematically consistent trajectories with millimeter-level accuracy and synchronized RGB observations during direct human manipulation. The robot, objects, and environment are reconstructed as editable 3D
 Gaussian Splatting assets, enabling geometry-consistent replay and large-scale data augmentation. Additionally, a lightweight Mask Adapter injects instance-level semantics into the policy to enhance robustness under visual domain shifts. 
@@ -43,6 +45,7 @@ Our hardware design will be updated before 2026.2.15 !
     - [Raw Data (CapExo Output)](#raw-data-capexo-output)
     - [Processed Data (GaussianSim Output)](#processed-data-gaussiansim-output)
     - [Training Data (HDF5)](#training-data-hdf5)
+  - [Citation](#citation)
   - [Acknowledgements](#acknowledgements)
   - [License](#license)
 
@@ -182,6 +185,24 @@ data/
 │   └── tcps     (N, 10) float64
 └── demo_1/
     └── ...
+```
+
+---
+
+## Citation
+
+If you find this work useful, please cite:
+
+```bibtex
+@article{exogs2026,
+  title={ExoGS: A 4D Real-to-Sim-to-Real Framework for Scalable Manipulation Data Collection},
+  author={Yiming Wang, Ruogu Zhang, Minyang Li, Hao Shi, Junbo Wang, Deyi Li, Jieji Ren, Wenhai Liu, Weiming Wang, Hao-Shu Fang},
+  year={2026},
+  eprint={2601.18629},
+  archivePrefix={arXiv},
+  primaryClass={cs.RO},
+  url={https://arxiv.org/abs/2601.18629},
+}
 ```
 
 ---
